@@ -17,7 +17,7 @@ open class Pokemon(
     val sprite: String = "",
     val stats: Stats,
     @Json(name = "apiTypes")
-    val types: List<Types>,
+    val types: Array<Types>,
     @Json(name = "apiGeneration")
     val generation: Int = 0,
 ) : Parcelable {
