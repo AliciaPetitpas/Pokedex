@@ -1,5 +1,7 @@
 package com.example.pokedex.ui.pokemondetail
 
+import android.app.SearchManager
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -79,6 +81,16 @@ class DetailPokemonFragment: Fragment() {
         view.findViewById<TextView>(R.id.tvSpeAtt).text = stats.speAttack.toString()
         view.findViewById<TextView>(R.id.tvSpeDef).text = stats.speDefense.toString()
         view.findViewById<TextView>(R.id.tvSpeed).text = stats.speed.toString()
+
+        // Rédirige vers au page google au clique de l'image
+        binding.ivPkmn.setOnClickListener {
+            val pokemon = currentPokemon.name
+
+            Intent(Intent.ACTION_WEB_SEARCH).also {
+                it.putExtra(SearchManager.QUERY, pokemon)
+                startActivity(it)
+            }
+        }
 
         binding.lifecycleOwner = this
 
