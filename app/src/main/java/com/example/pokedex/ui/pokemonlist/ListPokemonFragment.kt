@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -12,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.enishop.R
 import com.example.enishop.databinding.FragmentListPokemonBinding
 import com.example.pokedex.PokemonAdapter
-import com.squareup.picasso.Picasso
 
 private const val TAG = "ListPokemonFragment"
 class ListPokemonFragment: Fragment() {
@@ -37,8 +37,6 @@ class ListPokemonFragment: Fragment() {
 
         vm.pokemons.observe(viewLifecycleOwner) { pokemons ->
             recycler.adapter = PokemonAdapter(pokemons) {pokemon ->
-//                Picasso.get().load(pokemon.sprite).into()
-                Log.i(TAG, "sprite: " + pokemon.sprite)
                 val direction = ListPokemonFragmentDirections.actionListToDetail(pokemon)
                 Navigation.findNavController(view).navigate(direction)
             }

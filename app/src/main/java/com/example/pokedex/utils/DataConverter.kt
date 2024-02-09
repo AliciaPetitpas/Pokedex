@@ -17,12 +17,12 @@ object DataConverter {
     }
 
     fun toTypes(types: String): Array<Types> {
-        val type = object: TypeToken<Stats>(){}.type
+        val type = object: TypeToken<Array<Types>>(){}.type
         return Gson().fromJson(types, type)
     }
 
     fun toTypesJson(types: Array<Types>): String {
-        val type = object: TypeToken<Stats>(){}.type
+        val type = object: TypeToken<Array<Types>>(){}.type
         return Gson().toJson(types, type)
     }
 }
